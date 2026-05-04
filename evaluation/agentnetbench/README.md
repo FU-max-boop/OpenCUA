@@ -55,6 +55,21 @@ Notes:
 - For write+enter sequences, the evaluator merges them for robust scoring.
 
 ### Run evaluation
+Optional preflight before running model calls:
+```bash
+python preflight.py \
+  --data sample_data \
+  --image_dir sample_data/images \
+  --model opencua-7b \
+  --base_url http://YOUR_OPENAI_COMPATIBLE_SERVER/v1 \
+  --api_key YOUR_API_KEY
+```
+
+The preflight validates trajectory JSON files, image references, action schemas,
+relative coordinates, runtime dependencies, model-to-agent selection, and hosted
+model endpoint configuration. It does not call the model endpoint or run the
+evaluator. Use `--output-json`, `--output-md`, or `--strict` for CI/debugging.
+
 ```bash
 python run.py \
   --data single_data \
@@ -98,4 +113,3 @@ python reeval.py \
 
 ### License
 This repository is intended for research and benchmarking. Please review the project’s root-level license for terms.
-
