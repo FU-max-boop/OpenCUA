@@ -369,7 +369,7 @@ def check_dependencies(report: PreflightReport) -> None:
             "warn",
             "Missing optional package(s): "
             + ", ".join(missing_optional)
-            + ". The evaluator can install editdistance on demand, but preinstalling it avoids runtime side effects.",
+            + ". The evaluator will use a built-in edit-distance fallback, but preinstalling editdistance can speed up write-action scoring.",
         )
     else:
         report.add("optional_dependencies", "pass", "Optional packages are importable")
